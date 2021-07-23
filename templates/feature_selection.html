@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Proactive Quality Prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+ <div class="features-list">
+	<h1>Proactive Quality Prediction</h1>
+
+     <h3>Feature Selection</h3>
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="/dashboard" method="post">
+        <table>
+            <tbody>
+            <tr>
+                <td>
+                  <label for="fea_xaxis">Features in X-Axis:</label>
+                  <select name="fea_xaxis" id="fea_xaxis" size="20" multiple>
+                      <option value=""> -- None -- </option>
+                  {%for feature_name in fea_xaxis%}
+                    <option value="{{feature_name}}">{{feature_name}}</option>
+                  {%endfor%}
+                  </select>
+                </td>
+                <td>
+                   <label for="fea_yaxis">Features in Y-Axis:</label>
+                  <select name="fea_yaxis" id="fea_yaxis" size="20" multiple>
+                      <option value=""> -- None -- </option>
+                  {%for feature_name in fea_yaxis%}
+                    <option value="{{feature_name}}">{{feature_name}}</option>
+                  {%endfor%}
+                  </select>
+                </td>
+                <td>
+                  <label for="fea_zaxis">Features in Z-Axis:</label>
+                  <select name="fea_zaxis" id="fea_zaxis" size="20" multiple>
+                      <option value=""> -- None -- </option>
+                  {%for feature_name in fea_zaxis%}
+                    <option value="{{feature_name}}">{{feature_name}}</option>
+                  {%endfor%}
+                  </select>
+                </td>
+                <td>
+                  <label for="fea_errors">Error Features:</label>
+                  <select name="fea_errors" id="fea_errors" size="20" multiple>
+                      <option value=""> -- None -- </option>
+                  {%for feature_name in fea_errors%}
+                    <option value="{{feature_name}}">{{feature_name}}</option>
+                  {%endfor%}
+                  </select>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict Defects</button>
+    </form>
+
+   <br>
+   <br>
+ </div>
+
+
+</body>
+</html>
